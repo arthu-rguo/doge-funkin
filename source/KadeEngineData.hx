@@ -10,7 +10,7 @@ class KadeEngineData
 			FlxG.save.data.newInput = true;
 
 		if (FlxG.save.data.downscroll == null)
-			FlxG.save.data.downscroll = false;
+			FlxG.save.data.downscroll = true;
 
 		if (FlxG.save.data.dfjk == null)
 			FlxG.save.data.dfjk = false;
@@ -25,7 +25,7 @@ class KadeEngineData
 			FlxG.save.data.songPosition = false;
 
 		if (FlxG.save.data.fps == null)
-			FlxG.save.data.fps = false;
+			FlxG.save.data.fps = true;
 
 		if (FlxG.save.data.changedHit == null)
 		{
@@ -53,10 +53,10 @@ class KadeEngineData
 			FlxG.save.data.frames = 10;
 
 		if (FlxG.save.data.accuracyMod == null)
-			FlxG.save.data.accuracyMod = 1;
+			FlxG.save.data.accuracyMod = 0;
 
 		if (FlxG.save.data.watermark == null)
-			FlxG.save.data.watermark = true;
+			FlxG.save.data.watermark = false;
 
 		if (FlxG.save.data.ghost == null)
 			FlxG.save.data.ghost = true;
@@ -68,13 +68,13 @@ class KadeEngineData
 			FlxG.save.data.flashing = true;
 
 		if (FlxG.save.data.resetButton == null)
-			FlxG.save.data.resetButton = false;
+			FlxG.save.data.resetButton = true;
 		
 		if (FlxG.save.data.botplay == null)
 			FlxG.save.data.botplay = false;
 
 		if (FlxG.save.data.cpuStrums == null)
-			FlxG.save.data.cpuStrums = false;
+			FlxG.save.data.cpuStrums = true;
 
 		if (FlxG.save.data.strumline == null)
 			FlxG.save.data.strumline = false;
@@ -86,7 +86,7 @@ class KadeEngineData
 			FlxG.save.data.camzoom = true;
 
 		if (FlxG.save.data.scoreScreen == null)
-			FlxG.save.data.scoreScreen = true;
+			FlxG.save.data.scoreScreen = false;
 
 		if (FlxG.save.data.inputShow == null)
 			FlxG.save.data.inputShow = false;

@@ -498,6 +498,38 @@ class Character extends FlxSprite
 				addOffset("singDOWN-alt", -30, -27);
 
 				playAnim('idle');
+
+			case 'doge':
+				frames = Paths.getSparrowAtlas('characters/doge_assets');
+				animation.addByPrefix('idle', 'doge idle', 24, false);
+				animation.addByPrefix('singUP', 'doge up', 24, false);
+				animation.addByPrefix('singDOWN', 'doge down', 24, false);
+				animation.addByPrefix('singLEFT', 'doge left', 24, false);
+				animation.addByPrefix('singRIGHT', 'doge right', 24, false);
+
+				addOffset('idle');
+				addOffset("singUP");
+				addOffset("singRIGHT");
+				addOffset("singLEFT");
+				addOffset("singDOWN");
+
+				playAnim('idle');
+
+			case 'walter':
+				frames = Paths.getSparrowAtlas('characters/walter_assets');
+				animation.addByPrefix('idle', 'walter idle', 24, false);
+				animation.addByPrefix('singUP', 'walter up', 24, false);
+				animation.addByPrefix('singDOWN', 'walter down', 24, false);
+				animation.addByPrefix('singLEFT', 'walter left', 24, false);
+				animation.addByPrefix('singRIGHT', 'walter right', 24, false);
+
+				addOffset('idle');
+				addOffset("singUP");
+				addOffset("singRIGHT");
+				addOffset("singLEFT");
+				addOffset("singDOWN");
+
+				playAnim('idle');
 		}
 
 		dance();

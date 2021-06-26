@@ -89,6 +89,8 @@ class Main extends Sprite
 		toggleFPS(FlxG.save.data.fps);
 
 		#end
+
+		FlxG.sound.volume = 0.5;
 	}
 
 	var game:FlxGame;

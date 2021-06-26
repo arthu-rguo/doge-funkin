@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="walter_assets.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="walter down0000" x="0" y="0" width="757" height="700"/>
+	<SubTexture name="walter down0001" x="0" y="0" width="757" height="700"/>
+	<SubTexture name="walter down0002" x="757" y="0" width="757" height="700"/>
+	<SubTexture name="walter down0003" x="757" y="0" width="757" height="700"/>
+	<SubTexture name="walter down0004" x="757" y="0" width="757" height="700"/>
+	<SubTexture name="walter down0005" x="757" y="0" width="757" height="700"/>
+	<SubTexture name="walter down0006" x="757" y="0" width="757" height="700"/>
+	<SubTexture name="walter idle0000" x="1514" y="0" width="757" height="700"/>
+	<SubTexture name="walter idle0001" x="1514" y="0" width="757" height="700"/>
+	<SubTexture name="walter idle0002" x="2271" y="0" width="757" height="700"/>
+	<SubTexture name="walter idle0003" x="2271" y="0" width="757" height="700"/>
+	<SubTexture name="walter idle0004" x="3028" y="0" width="757" height="700"/>
+	<SubTexture name="walter idle0005" x="3028" y="0" width="757" height="700"/>
+	<SubTexture name="walter idle0006" x="0" y="700" width="757" height="700"/>
+	<SubTexture name="walter idle0007" x="0" y="700" width="757" height="700"/>
+	<SubTexture name="walter idle0008" x="757" y="700" width="757" height="700"/>
+	<SubTexture name="walter idle0009" x="757" y="700" width="757" height="700"/>
+	<SubTexture name="walter idle0010" x="1514" y="700" width="757" height="700"/>
+	<SubTexture name="walter idle0011" x="1514" y="700" width="757" height="700"/>
+	<SubTexture name="walter idle0012" x="2271" y="700" width="757" height="700"/>
+	<SubTexture name="walter idle0013" x="2271" y="700" width="757" height="700"/>
+	<SubTexture name="walter left0000" x="3028" y="700" width="757" height="700"/>
+	<SubTexture name="walter left0001" x="3028" y="700" width="757" height="700"/>
+	<SubTexture name="walter left0002" x="0" y="1400" width="757" height="700"/>
+	<SubTexture name="walter left0003" x="0" y="1400" width="757" height="700"/>
+	<SubTexture name="walter left0004" x="0" y="1400" width="757" height="700"/>
+	<SubTexture name="walter left0005" x="0" y="1400" width="757" height="700"/>
+	<SubTexture name="walter left0006" x="0" y="1400" width="757" height="700"/>
+	<SubTexture name="walter right0000" x="757" y="1400" width="757" height="700"/>
+	<SubTexture name="walter right0001" x="757" y="1400" width="757" height="700"/>
+	<SubTexture name="walter right0002" x="1514" y="1400" width="757" height="700"/>
+	<SubTexture name="walter right0003" x="1514" y="1400" width="757" height="700"/>
+	<SubTexture name="walter right0004" x="1514" y="1400" width="757" height="700"/>
+	<SubTexture name="walter right0005" x="1514" y="1400" width="757" height="700"/>
+	<SubTexture name="walter right0006" x="1514" y="1400" width="757" height="700"/>
+	<SubTexture name="walter up0000" x="2271" y="1400" width="757" height="700"/>
+	<SubTexture name="walter up0001" x="2271" y="1400" width="757" height="700"/>
+	<SubTexture name="walter up0002" x="3028" y="1400" width="757" height="700"/>
+	<SubTexture name="walter up0003" x="3028" y="1400" width="757" height="700"/>
+	<SubTexture name="walter up0004" x="3028" y="1400" width="757" height="700"/>
+	<SubTexture name="walter up0005" x="3028" y="1400" width="757" height="700"/>
+	<SubTexture name="walter up0006" x="3028" y="1400" width="757" height="700"/>
+</TextureAtlas>

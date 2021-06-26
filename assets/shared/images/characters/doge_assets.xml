@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="doge_assets.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="doge down0000" x="0" y="0" width="648" height="615"/>
+	<SubTexture name="doge down0001" x="0" y="0" width="648" height="615"/>
+	<SubTexture name="doge down0002" x="648" y="0" width="648" height="615"/>
+	<SubTexture name="doge down0003" x="648" y="0" width="648" height="615"/>
+	<SubTexture name="doge down0004" x="648" y="0" width="648" height="615"/>
+	<SubTexture name="doge down0005" x="648" y="0" width="648" height="615"/>
+	<SubTexture name="doge down0006" x="648" y="0" width="648" height="615"/>
+	<SubTexture name="doge idle0000" x="1296" y="0" width="648" height="615"/>
+	<SubTexture name="doge idle0001" x="1296" y="0" width="648" height="615"/>
+	<SubTexture name="doge idle0002" x="0" y="615" width="648" height="615"/>
+	<SubTexture name="doge idle0003" x="0" y="615" width="648" height="615"/>
+	<SubTexture name="doge idle0004" x="648" y="615" width="648" height="615"/>
+	<SubTexture name="doge idle0005" x="648" y="615" width="648" height="615"/>
+	<SubTexture name="doge idle0006" x="1296" y="615" width="648" height="615"/>
+	<SubTexture name="doge idle0007" x="1296" y="615" width="648" height="615"/>
+	<SubTexture name="doge idle0008" x="0" y="1230" width="648" height="615"/>
+	<SubTexture name="doge idle0009" x="0" y="1230" width="648" height="615"/>
+	<SubTexture name="doge idle0010" x="648" y="1230" width="648" height="615"/>
+	<SubTexture name="doge idle0011" x="648" y="1230" width="648" height="615"/>
+	<SubTexture name="doge idle0012" x="0" y="1230" width="648" height="615"/>
+	<SubTexture name="doge idle0013" x="0" y="1230" width="648" height="615"/>
+	<SubTexture name="doge left0000" x="1296" y="1230" width="648" height="615"/>
+	<SubTexture name="doge left0001" x="1296" y="1230" width="648" height="615"/>
+	<SubTexture name="doge left0002" x="0" y="1845" width="648" height="615"/>
+	<SubTexture name="doge left0003" x="0" y="1845" width="648" height="615"/>
+	<SubTexture name="doge left0004" x="0" y="1845" width="648" height="615"/>
+	<SubTexture name="doge left0005" x="0" y="1845" width="648" height="615"/>
+	<SubTexture name="doge left0006" x="0" y="1845" width="648" height="615"/>
+	<SubTexture name="doge right0000" x="648" y="1845" width="648" height="615"/>
+	<SubTexture name="doge right0001" x="648" y="1845" width="648" height="615"/>
+	<SubTexture name="doge right0002" x="1296" y="1845" width="648" height="615"/>
+	<SubTexture name="doge right0003" x="1296" y="1845" width="648" height="615"/>
+	<SubTexture name="doge right0004" x="1296" y="1845" width="648" height="615"/>
+	<SubTexture name="doge right0005" x="1296" y="1845" width="648" height="615"/>
+	<SubTexture name="doge right0006" x="1296" y="1845" width="648" height="615"/>
+	<SubTexture name="doge up0000" x="0" y="2460" width="648" height="615"/>
+	<SubTexture name="doge up0001" x="0" y="2460" width="648" height="615"/>
+	<SubTexture name="doge up0002" x="648" y="2460" width="648" height="615"/>
+	<SubTexture name="doge up0003" x="648" y="2460" width="648" height="615"/>
+	<SubTexture name="doge up0004" x="648" y="2460" width="648" height="615"/>
+	<SubTexture name="doge up0005" x="648" y="2460" width="648" height="615"/>
+	<SubTexture name="doge up0006" x="648" y="2460" width="648" height="615"/>
+</TextureAtlas>
