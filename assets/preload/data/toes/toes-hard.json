@@ -677,6 +677,31 @@
                 "lengthInSteps": 16,
                 "sectionNotes": [
                     [
+                        33900,
+                        2,
+                        0
+                    ],
+                    [
+                        34950,
+                        3,
+                        0
+                    ],
+                    [
+                        34200,
+                        3,
+                        0
+                    ],
+                    [
+                        34350,
+                        1,
+                        0
+                    ],
+                    [
+                        34650,
+                        3,
+                        0
+                    ],
+                    [
                         35250,
                         0,
                         0
@@ -697,6 +722,11 @@
                         0
                     ],
                     [
+                        34950,
+                        3,
+                        0
+                    ],
+                    [
                         34200,
                         3,
                         0
@@ -712,8 +742,18 @@
                         0
                     ],
                     [
-                        34950,
-                        3,
+                        35250,
+                        0,
+                        0
+                    ],
+                    [
+                        35400,
+                        1,
+                        0
+                    ],
+                    [
+                        35700,
+                        1,
                         0
                     ]
                 ],
@@ -3985,39 +4025,12 @@
             },
             {
                 "lengthInSteps": 16,
+                "altAnim": false,
                 "typeOfSection": 0,
                 "sectionNotes": [],
-                "altAnim": false,
                 "bpm": 100,
                 "changeBPM": false,
                 "mustHitSection": true
-            },
-            {
-                "lengthInSteps": 16,
-                "typeOfSection": 0,
-                "sectionNotes": [],
-                "altAnim": false,
-                "bpm": 100,
-                "changeBPM": false,
-                "mustHitSection": true
-            },
-            {
-                "lengthInSteps": 16,
-                "typeOfSection": 0,
-                "sectionNotes": [],
-                "altAnim": false,
-                "bpm": 100,
-                "changeBPM": false,
-                "mustHitSection": true
-            },
-            {
-                "sectionNotes": [],
-                "typeOfSection": 0,
-                "lengthInSteps": 16,
-                "altAnim": false,
-                "mustHitSection": true,
-                "changeBPM": false,
-                "bpm": 100
             },
             {
                 "lengthInSteps": 16,
@@ -4039,10 +4052,10 @@
             }
         ],
         "song": "Toes",
-        "needsVoices": true,
         "stage": "couch",
         "validScore": true,
         "sections": 0,
+        "needsVoices": true,
         "bpm": 100,
         "speed": 1.6
     }
