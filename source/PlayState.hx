@@ -761,6 +761,40 @@ class PlayState extends MusicBeatState
 				fg.active = false;
 				add(fg);
 			}
+			case 'derby':
+			{
+				defaultCamZoom = 0.7;
+				curStage = 'derby';
+
+				var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('derby/derbyback'));
+				bg.screenCenter();
+				bg.x += 14;
+				bg.y += 22;
+				bg.setGraphicSize(Std.int(bg.width * 0.73));
+				bg.scrollFactor.set(0.1, 0.1);
+				bg.antialiasing = true;
+				bg.active = false;
+				add(bg);
+
+				var mg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('derby/derbymid'));
+				mg.screenCenter();
+				mg.x += 42;
+				mg.y -= 22;
+				mg.setGraphicSize(Std.int(mg.width * 0.78));
+				mg.scrollFactor.set(0.3, 0.3);
+				mg.antialiasing = true;
+				mg.active = false;
+				add(mg);
+
+				var fg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('derby/derbyfront'));
+				fg.screenCenter();
+				fg.x += 140;
+				fg.y += 220;
+				fg.setGraphicSize(Std.int(fg.width * 0.84));
+				fg.antialiasing = true;
+				fg.active = false;
+				add(fg);
+			}
 			default:
 			{
 					defaultCamZoom = 0.9;
@@ -901,12 +935,14 @@ class PlayState extends MusicBeatState
 				add(evilTrail);
 				// evilTrail.scrollFactor.set(1.1, 1.1);
 				}
-
-
 				boyfriend.x += 200;
 				boyfriend.y += 220;
 				gf.x += 180;
 				gf.y += 300;
+			case 'derby':
+				boyfriend.x += 50;
+				dad.x -= 50;
+				gf.y -= 30;
 		}
 
 		if (!PlayStateChangeables.Optimize)
