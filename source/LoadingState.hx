@@ -50,6 +50,7 @@ class LoadingState extends MusicBeatState
 		dogeDance.animation.addByPrefix('dance', 'doge', 24);
 		dogeDance.antialiasing = true;
 		add(dogeDance);
+		dogeDance.animation.play('dance');
 		add(logo);
 		
 		initSongsManifest().onComplete
