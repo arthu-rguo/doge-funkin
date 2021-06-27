@@ -1697,16 +1697,6 @@ class PlayState extends MusicBeatState
 
 				var addNote = false;
 
-				for (i in unspawnNotes)
-					if (i.strumTime == daStrumTime && i.noteData == daNoteData)
-						addNote = true;
-
-				if (addNote)
-				{
-					trace('stacked note, thats cringe');
-					continue;
-				}
-
 				var susLength:Float = swagNote.sustainLength;
 
 				susLength = susLength / Conductor.stepCrochet;
