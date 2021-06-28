@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="derbyfire.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="fire0000" x="0" y="0" width="2560" height="1440"/>
+	<SubTexture name="fire0001" x="0" y="0" width="2560" height="1440"/>
+	<SubTexture name="fire0002" x="0" y="1442" width="2560" height="1440"/>
+	<SubTexture name="fire0003" x="0" y="1442" width="2560" height="1440"/>
+	<SubTexture name="fire0004" x="0" y="2884" width="2560" height="1440"/>
+	<SubTexture name="fire0005" x="0" y="2884" width="2560" height="1440"/>
+</TextureAtlas>

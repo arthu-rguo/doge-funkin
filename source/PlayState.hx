@@ -183,6 +183,7 @@ class PlayState extends MusicBeatState
 	var upperBoppers:FlxSprite;
 	var bottomBoppers:FlxSprite;
 	var santa:FlxSprite;
+	var fgFire:FlxSprite;
 
 	var fc:Bool = true;
 
@@ -795,6 +796,64 @@ class PlayState extends MusicBeatState
 				fg.active = false;
 				add(fg);
 			}
+			case 'derbyfire':
+				{
+					defaultCamZoom = 0.7;
+					curStage = 'derbyfire';
+	
+					var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('derby/derbyfireback'));
+					bg.screenCenter();
+					bg.x += 14;
+					bg.y += 22;
+					bg.setGraphicSize(Std.int(bg.width * 0.73));
+					bg.scrollFactor.set(0.1, 0.1);
+					bg.antialiasing = true;
+					bg.active = false;
+					add(bg);
+
+					var fire:FlxSprite = new FlxSprite();
+					fire.frames = Paths.getSparrowAtlas('derby/derbyfire');
+					fire.animation.addByPrefix('fire', 'fire', 24, true);
+					fire.screenCenter();
+					fire.x += 42;
+					fire.y -= 22;
+					fire.setGraphicSize(Std.int(fire.width * 0.78));
+					fire.scrollFactor.set(0.3, 0.3);
+					fire.antialiasing = true;
+					if (FlxG.save.data.distractions) {
+						add(fire);
+						fire.animation.play('fire');
+					} 
+	
+					var mg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('derby/derbymid'));
+					mg.screenCenter();
+					mg.x += 42;
+					mg.y -= 22;
+					mg.setGraphicSize(Std.int(mg.width * 0.78));
+					mg.scrollFactor.set(0.3, 0.3);
+					mg.antialiasing = true;
+					mg.active = false;
+					add(mg);
+	
+					var fg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('derby/derbyfront'));
+					fg.screenCenter();
+					fg.x += 140;
+					fg.y += 220;
+					fg.setGraphicSize(Std.int(fg.width * 0.84));
+					fg.antialiasing = true;
+					fg.active = false;
+					add(fg);
+
+					fgFire = new FlxSprite();
+					fgFire.frames = Paths.getSparrowAtlas('derby/derbyfire');
+					fgFire.animation.addByPrefix('fire', 'fire', 24, true);
+					fgFire.screenCenter();
+					fgFire.x += 182;
+					fgFire.y += 420;
+					fgFire.setGraphicSize(Std.int(fgFire.width * 0.89));
+					fgFire.scrollFactor.set(1.3, 0.3);
+					fgFire.antialiasing = true;
+				}
 			default:
 			{
 					defaultCamZoom = 0.9;
@@ -955,6 +1014,12 @@ class PlayState extends MusicBeatState
 
 			add(dad);
 			add(boyfriend);
+
+			// fire overlay
+			if (curStage == 'derbyfire' && FlxG.save.data.distractions) {
+				add(fgFire);
+				fgFire.animation.play('fire');
+			} 
 		}
 
 
@@ -4045,7 +4110,7 @@ class PlayState extends MusicBeatState
 	
 						phillyCityLights.members[curLight].visible = true;
 						// phillyCityLights.members[curLight].alpha = 1;
-				}
+					}
 
 				}
 
@@ -4055,6 +4120,12 @@ class PlayState extends MusicBeatState
 						trainCooldown = FlxG.random.int(-4, 0);
 						trainStart();
 					}
+				}
+			case "derbyfire":
+				// wtf scary walter...
+				if (dad.animation.curAnim.name.startsWith("sing")) {
+					boyfriend.playAnim('scared', true);
+					gf.playAnim('scared', true);
 				}
 		}
 
@@ -4067,4 +4138,5 @@ class PlayState extends MusicBeatState
 	}
 
 	var curLight:Int = 0;
+
 }
