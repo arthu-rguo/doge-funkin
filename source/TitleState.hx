@@ -370,7 +370,7 @@ class TitleState extends MusicBeatState
 		switch (curBeat)
 		{
 			case 1:
-				createCoolText(['Arfie', 'Belle', 'Yvng', 'The FNF team']);
+				createCoolText(['ArfieCat', 'Belle', 'Yvng', 'The FNF team']);
 			case 3:
 				addMoreText('present');
 			case 4:
