@@ -22,7 +22,7 @@ class CharacterSetting
 class MenuCharacter extends FlxSprite
 {
 	private static var settings:Map<String, CharacterSetting> = [
-		'bf' => new CharacterSetting(0, -20, 1.0, true),
+		'bf' => new CharacterSetting(30, -25, 1.0, true),
 		'gf' => new CharacterSetting(50, 80, 1.5, true),
 		'dad' => new CharacterSetting(-15, 130),
 		'spooky' => new CharacterSetting(20, 30),
@@ -30,8 +30,8 @@ class MenuCharacter extends FlxSprite
 		'mom' => new CharacterSetting(-30, 140, 0.85),
 		'parents-christmas' => new CharacterSetting(100, 130, 1.8),
 		'senpai' => new CharacterSetting(-40, -45, 1.4),
-		'doge' => new CharacterSetting(0, 60, 1.5),
-		'walter' => new CharacterSetting(0, 80, 1.7)
+		'doge' => new CharacterSetting(50, 20, 1.3),
+		'walter' => new CharacterSetting(50, 70, 1.3)
 	];
 
 	private var flipped:Bool = false;
@@ -45,17 +45,17 @@ class MenuCharacter extends FlxSprite
 
 		frames = Paths.getSparrowAtlas('campaign_menu_UI_characters');
 
-		animation.addByPrefix('bf', "BF idle dance white", 24);
-		animation.addByPrefix('bfConfirm', 'BF HEY!!', 24, false);
-		animation.addByPrefix('gf', "GF Dancing Beat WHITE", 24);
-		animation.addByPrefix('dad', "Dad idle dance BLACK LINE", 24);
-		animation.addByPrefix('spooky', "spooky dance idle BLACK LINES", 24);
-		animation.addByPrefix('pico', "Pico Idle Dance", 24);
-		animation.addByPrefix('mom', "Mom Idle BLACK LINES", 24);
-		animation.addByPrefix('parents-christmas', "Parent Christmas Idle", 24);
-		animation.addByPrefix('senpai', "SENPAI idle Black Lines", 24);
-		animation.addByPrefix('doge', "doge transparent", 24);
-		animation.addByPrefix('walter', "walter transparent", 24);
+		animation.addByPrefix('bf', "bf idle", 24);
+		animation.addByPrefix('bfConfirm', 'bf hey', 24, false);
+		animation.addByPrefix('gf', "gf", 24);
+		animation.addByPrefix('dad', "dad", 24);
+		animation.addByPrefix('spooky', "spooky dance", 24);
+		animation.addByPrefix('pico', "pico", 24);
+		animation.addByPrefix('mom', "mom", 24);
+		animation.addByPrefix('parents-christmas', "christmas", 24);
+		animation.addByPrefix('senpai', "senpai", 24);
+		animation.addByPrefix('doge', "doge", 24);
+		animation.addByPrefix('walter', "walter", 24);
 
 		setGraphicSize(Std.int(width * scale));
 		updateHitbox();

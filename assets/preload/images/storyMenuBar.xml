@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="storyMenuBar.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="tutorialweek0000" x="0" y="0" width="1280" height="400"/>
+	<SubTexture name="dogeweek0000" x="0" y="402" width="1280" height="400"/>
+	<SubTexture name="walterweek0000" x="0" y="804" width="1280" height="400"/>
+</TextureAtlas>
