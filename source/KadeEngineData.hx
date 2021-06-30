@@ -1,4 +1,5 @@
 import flixel.input.gamepad.FlxGamepad;
+import lime.app.Application;
 import openfl.Lib;
 import flixel.FlxG;
 
@@ -10,7 +11,7 @@ class KadeEngineData
 			FlxG.save.data.newInput = true;
 
 		if (FlxG.save.data.downscroll == null)
-			FlxG.save.data.downscroll = true;
+			FlxG.save.data.downscroll = false;
 
 		if (FlxG.save.data.dfjk == null)
 			FlxG.save.data.dfjk = false;
@@ -25,7 +26,7 @@ class KadeEngineData
 			FlxG.save.data.songPosition = false;
 
 		if (FlxG.save.data.fps == null)
-			FlxG.save.data.fps = true;
+			FlxG.save.data.fps = false;
 
 		if (FlxG.save.data.changedHit == null)
 		{
@@ -38,10 +39,10 @@ class KadeEngineData
 			FlxG.save.data.fpsRain = false;
 
 		if (FlxG.save.data.fpsCap == null)
-			FlxG.save.data.fpsCap = 120;
+			FlxG.save.data.fpsCap = Application.current.window.displayMode.refreshRate;
 
 		if (FlxG.save.data.fpsCap > 285 || FlxG.save.data.fpsCap < 60)
-			FlxG.save.data.fpsCap = 120; // baby proof so you can't hard lock ur copy of kade engine
+			FlxG.save.data.fpsCap = Application.current.window.displayMode.refreshRate; // baby proof so you can't hard lock ur copy of kade engine
 		
 		if (FlxG.save.data.scrollSpeed == null)
 			FlxG.save.data.scrollSpeed = 1;

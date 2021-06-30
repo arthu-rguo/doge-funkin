@@ -349,9 +349,24 @@ class StoryMenuState extends MusicBeatState
 			PlayState.SONG = Song.loadFromJson(poop, PlayState.storyPlaylist[0]);
 			PlayState.storyWeek = curWeek;
 			PlayState.campaignScore = 0;
+			// kinda unintended but sounds cool
+			FlxG.sound.music.stop();
 			new FlxTimer().start(1, function(tmr:FlxTimer)
 			{
-				LoadingState.loadAndSwitchState(new PlayState(), true);
+				#if desktop
+				// START-OF-WEEK CUTSCENES
+				switch(PlayState.SONG.song)
+				{
+					case 'Tutorial':
+						LoadingState.loadAndSwitchState(new VideoState("assets/videos/test/penis.webm", new PlayState()));
+
+					default:
+						// no cutscene
+						LoadingState.loadAndSwitchState(new PlayState());
+				}
+				#else
+				LoadingState.loadAndSwitchState(new PlayState());
+				#end
 			});
 		}
 	}

@@ -429,7 +429,7 @@ class FPSCapOption extends Option
 	override function getValue():String
 	{
 		return "Current FPS Cap: " + FlxG.save.data.fpsCap + 
-		(FlxG.save.data.fpsCap == Application.current.window.displayMode.refreshRate ? "Hz (Refresh Rate)" : "");
+		(FlxG.save.data.fpsCap == Application.current.window.displayMode.refreshRate ? " (VSync)" : "");
 	}
 }
 

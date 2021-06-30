@@ -41,12 +41,12 @@ class OptionsMenu extends MusicBeatState
 		]),
 		new OptionCategory("Appearance", [
 			new DistractionsAndEffectsOption("Toggle stage distractions that can hinder your gameplay."),
-			new CamZoomOption("Toggle the camera zoom in-game."),
+			new CamZoomOption("Toggle the camera zooming in on the beat."),
 			#if desktop
 			// new RainbowFPSOption("Make the FPS counter rainbow."),
-			new AccuracyOption("Display accuracy information."),
+			new AccuracyOption("Display advanced accuracy information."),
 			new NPSDisplayOption("Display your current notes per second."),
-			new SongPositionOption("Show the songs current position as a bar."),
+			new SongPositionOption("Show the song's current position as a bar."),
 			new CpuStrums("CPU's strumline lights up when a note hits it."),
 			#end
 		]),
@@ -58,8 +58,8 @@ class OptionsMenu extends MusicBeatState
 			#end
 			new FlashingLightsOption("Toggle flashing lights that can cause epileptic seizures and strain."),
 			// new WatermarkOption("Enable and disable all watermarks from the engine."),
-			new ScoreScreen("Show the score screen after the end of a song."),
-			new ShowInput("Display every single input in the score screen."),
+			// new ScoreScreen("Show the score screen after the end of a song."),
+			// new ShowInput("Display every single input in the score screen."),
 			new Optimization("No backgrounds, no characters, centered notes, no player 2."),
 			new BotPlay("Showcase your charts and mods with autoplay."),
 		])

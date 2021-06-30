@@ -2902,7 +2902,24 @@ class PlayState extends MusicBeatState
 					else
 					{
 						FlxG.sound.playMusic(Paths.music('freakyMenu'));
+						#if desktop
+						// END-OF-WEEK CUTSCENES
+						FlxTransitionableState.skipNextTransIn = true;
+						FlxTransitionableState.skipNextTransOut = true;
+						switch(PlayState.SONG.song)
+						{
+							case 'whatever':
+								LoadingState.loadAndSwitchState(new VideoState("assets/videos/", new StoryMenuState(), -1, true));
+
+							default:
+								// no cutscene
+								FlxTransitionableState.skipNextTransIn = false;
+								FlxTransitionableState.skipNextTransOut = false;
+								FlxG.switchState(new StoryMenuState());
+						}
+						#else
 						FlxG.switchState(new StoryMenuState());
+						#end
 					}
 
 					#if windows
@@ -2955,11 +2972,22 @@ class PlayState extends MusicBeatState
 					FlxTransitionableState.skipNextTransOut = true;
 					prevCamFollow = camFollow;
 
-
 					PlayState.SONG = Song.loadFromJson(poop, PlayState.storyPlaylist[0]);
 					FlxG.sound.music.stop();
 
+					#if desktop
+					// PRE-SONG CUTSCENES
+					switch(PlayState.SONG.song)
+					{
+						case 'Scrapped Euthanasia':
+							LoadingState.loadAndSwitchState(new VideoState("assets/videos/test/penis.webm", new PlayState()));
+
+						default:
+							LoadingState.loadAndSwitchState(new PlayState());
+					}
+					#else
 					LoadingState.loadAndSwitchState(new PlayState());
+					#end
 				}
 			}
 			else
@@ -3536,7 +3564,7 @@ class PlayState extends MusicBeatState
 					FlxG.stage.window.onFocusOut.add(focusOut);
 					FlxG.stage.window.onFocusIn.add(focusIn);
 
-					var ourSource:String = "assets/videos/daWeirdVid/dontDelete.webm";
+					var ourSource:String = "assets/videos/00placeholder/placeholder.webm";
 					WebmPlayer.SKIP_STEP_LIMIT = 90;
 					var str1:String = "WEBM SHIT"; 
 					webmHandler = new WebmHandler();
