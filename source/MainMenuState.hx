@@ -175,7 +175,7 @@ class MainMenuState extends MusicBeatState
 
 			if (controls.BACK)
 			{
-				FlxG.switchState(new TitleState());
+				// FlxG.switchState(new TitleState()); causes a crash lol
 			}
 
 			if (controls.ACCEPT)
