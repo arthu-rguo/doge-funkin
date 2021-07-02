@@ -1551,13 +1551,13 @@ class PlayState extends MusicBeatState
 				data = i;
 		}
 
-		if (evt.keyLocation == KeyLocation.NUM_PAD)
-		{
-			trace(String.fromCharCode(evt.charCode) + " " + key);
-		}
-
 		if (data == -1)
 			return;
+
+		if (keys[data])
+			return;
+
+		keys[data] = true;
 
 		var ana = new Ana(Conductor.songPosition, null, false, "miss", data);
 
