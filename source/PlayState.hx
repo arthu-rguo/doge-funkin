@@ -2902,14 +2902,15 @@ class PlayState extends MusicBeatState
 					else
 					{
 						FlxG.sound.playMusic(Paths.music('freakyMenu'));
-						#if desktop
+
 						// END-OF-WEEK CUTSCENES
+						#if desktop
 						FlxTransitionableState.skipNextTransIn = true;
 						FlxTransitionableState.skipNextTransOut = true;
 						switch(PlayState.SONG.song)
 						{
 							case 'whatever':
-								LoadingState.loadAndSwitchState(new VideoState("assets/videos/", new StoryMenuState(), -1, true));
+								LoadingState.loadAndSwitchState(new VideoState("assets/videos/", new StoryMenuState()));
 
 							default:
 								// no cutscene
@@ -2920,6 +2921,7 @@ class PlayState extends MusicBeatState
 						#else
 						FlxG.switchState(new StoryMenuState());
 						#end
+				
 					}
 
 					#if windows
@@ -2975,12 +2977,12 @@ class PlayState extends MusicBeatState
 					PlayState.SONG = Song.loadFromJson(poop, PlayState.storyPlaylist[0]);
 					FlxG.sound.music.stop();
 
-					#if desktop
 					// PRE-SONG CUTSCENES
+					#if desktop
 					switch(PlayState.SONG.song)
 					{
 						case 'Scrapped Euthanasia':
-							LoadingState.loadAndSwitchState(new VideoState("assets/videos/test/penis.webm", new PlayState()));
+							LoadingState.loadAndSwitchState(new VideoState("assets/videos/walter/vid.webm", new PlayState()));
 
 						default:
 							LoadingState.loadAndSwitchState(new PlayState());
@@ -2988,6 +2990,7 @@ class PlayState extends MusicBeatState
 					#else
 					LoadingState.loadAndSwitchState(new PlayState());
 					#end
+
 				}
 			}
 			else

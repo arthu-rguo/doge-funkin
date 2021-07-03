@@ -27,7 +27,7 @@ class StoryMenuState extends MusicBeatState
 	var weekData:Array<Dynamic> = [
 		['Tutorial'],
 		['Feet', 'Toes', 'Sole'],
-		['Fire Truck', 'Moster Truck', 'Scrapped Euthanasia']
+		['Fire Truck', 'Moster Truck']
 		// ['Bopeebo', 'Fresh', 'Dad Battle'],
 		// ['Spookeez', 'South', "Monster"],
 		// ['Pico', 'Philly Nice', "Blammed"],
@@ -353,12 +353,13 @@ class StoryMenuState extends MusicBeatState
 			FlxG.sound.music.stop();
 			new FlxTimer().start(1, function(tmr:FlxTimer)
 			{
-				#if desktop
+				
 				// START-OF-WEEK CUTSCENES
+				#if desktop
 				switch(PlayState.SONG.song)
 				{
-					case 'Tutorial':
-						LoadingState.loadAndSwitchState(new VideoState("assets/videos/test/penis.webm", new PlayState()));
+					case 'whatever':
+						LoadingState.loadAndSwitchState(new VideoState("assets/videos/", new PlayState()));
 
 					default:
 						// no cutscene
@@ -367,6 +368,7 @@ class StoryMenuState extends MusicBeatState
 				#else
 				LoadingState.loadAndSwitchState(new PlayState());
 				#end
+				
 			});
 		}
 	}

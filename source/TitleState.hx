@@ -189,14 +189,13 @@ class TitleState extends MusicBeatState
 		add(dogeDance);
 		add(logoBl);
 
-		titleText = new FlxSprite(130, FlxG.height * 0.8);
+		titleText = new FlxSprite(150, FlxG.height * 0.78);
 		titleText.frames = Paths.getSparrowAtlas('titleEnter');
 		titleText.animation.addByPrefix('idle', "Press Enter to Begin", 24);
 		titleText.animation.addByPrefix('press', "ENTER PRESSED", 24);
 		titleText.antialiasing = true;
 		titleText.animation.play('idle');
 		titleText.updateHitbox();
-		// titleText.screenCenter(X);
 		add(titleText);
 
 		var logo:FlxSprite = new FlxSprite().loadGraphic(Paths.image('logo'));

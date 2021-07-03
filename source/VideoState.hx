@@ -1,30 +1,27 @@
-//Origin by GWebDev,KadeDev, Fixed by Raltyro for Kade Engine 1.5.#
-
 package;
 
 import flixel.FlxState;
 import flixel.FlxG;
+
 import flixel.FlxSprite;
 import flixel.FlxSubState;
+import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import lime.app.Application;
 import flixel.system.FlxSound;
-import openfl.display.BitmapData;
 import openfl.utils.Assets;
-import openfl.utils.AssetType;
-import haxe.io.Path;
+
 import openfl.Lib;
-#if desktop
-import webm.*;
-import webm.WebmPlayer; // idk
-#end
 
 using StringTools;
 
-class VideoState extends MusicBeatState {
-	public var filePath:String;
+class VideoState extends MusicBeatState
+{
+	public var leSource:String = "";
 	public var transClass:FlxState;
+	//public var transFunction:Void->Void;
+	public var txt:FlxText;
 	public var fuckingVolume:Float = 1;
 	public var notDone:Bool = true;
 	public var vidSound:FlxSound;
@@ -32,167 +29,206 @@ class VideoState extends MusicBeatState {
 	public var soundMultiplier:Float = 1;
 	public var prevSoundMultiplier:Float = 1;
 	public var videoFrames:Int = 0;
-	public var fixr:Int = 0;
+	public var defaultText:String = "";
 	public var doShit:Bool = false;
-	public var autoPause:Bool = false;
-	public var musicPaused:Bool = false;
-	public var bitmapData:BitmapData;
-	#if desktop
-	private var defaultskiplimit = WebmPlayer.SKIP_STEP_LIMIT;
-	#end
+	public var pauseText:String = "Press P To Pause/Unpause";
+	public var videoSprite:FlxSprite = new FlxSprite();
+	var ishit = 0;
 
-	public function new(fileName:String,toTrans:FlxState,frameSkipLimit:Int = -1,autopause:Bool = false) {
+	public function new(source:String, toTrans:FlxState)
+	{
 		super();
-
-		autoPause = autopause;
-
-		filePath = fileName;
+		
+		leSource = source;
 		transClass = toTrans;
-		bitmapData = null;
-		if (frameSkipLimit != -1 && GlobalVideo.isWebm) {
-			#if desktop
-			WebmPlayer.SKIP_STEP_LIMIT = frameSkipLimit;
-			#end
-		}
 	}
-
-	override function create() {
+	
+	override function create()
+	{
 		super.create();
-		notDone = true;
 		FlxG.autoPause = false;
 		doShit = false;
 		
-		var txtdata:Array<String> = (Assets.getText(filePath.replace(".webm",".txt"))).split(':');
-		videoFrames = Std.parseInt(txtdata[0]);
-		fixr = Std.parseInt(txtdata[1]);
+		if (GlobalVideo.isWebm)
+		{
+		videoFrames = Std.parseInt(Assets.getText(leSource.replace(".webm", ".txt")));
+		}
 		
 		fuckingVolume = FlxG.sound.music.volume;
 		FlxG.sound.music.volume = 0;
-		
-		if (Assets.exists(filePath.replace(".webm", ".ogg"), MUSIC) || Assets.exists(filePath.replace(".webm", ".ogg"), SOUND)) {
-			useSound = true;
-			vidSound = FlxG.sound.play(filePath.replace(".webm", ".ogg"));
+		var isHTML:Bool = false;
+		#if web
+		isHTML = true;
+		#end
+		var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
+		add(bg);
+		var skipText:FlxText = new FlxText(0, 0, 0, "Press ENTER to Skip", 16);
+		skipText.setBorderStyle(FlxTextBorderStyle.OUTLINE,0xFF000000,2,1);
+		skipText.y = 720 - skipText.height;
+		var html5Text:String = "Desktop\nVideo loading failed.";
+		if (isHTML)
+		{
+			html5Text = "HTML5\nTap anything to continue.";
 		}
-		
-		GlobalVideo.get().source(filePath);
+		defaultText = "Video cutscenes aren't\nsupported on HTML5.\n\nYou are currently playing on:\n\n" + html5Text;
+		txt = new FlxText(0, 0, FlxG.width,
+			defaultText,
+			32);
+		txt.setFormat("VCR OSD Mono", 32, FlxColor.WHITE, CENTER);
+		txt.screenCenter();
+		add(txt);
+		add(videoSprite);
+		add(skipText);
+
+		if (GlobalVideo.isWebm)
+		{
+			//if (Assets.exists(leSource.replace(".webm", ".ogg"), MUSIC) || Assets.exists(leSource.replace(".webm", ".ogg"), SOUND))
+			//{
+				useSound = true;
+				vidSound = FlxG.sound.play(leSource.replace(".webm", ".ogg"));
+			//}
+		}
+
+		GlobalVideo.get().source(leSource);
 		GlobalVideo.get().clearPause();
 		if (GlobalVideo.isWebm)
 		{
 			GlobalVideo.get().updatePlayer();
 		}
 		GlobalVideo.get().show();
-
-		if (GlobalVideo.isWebm) {
+		if (GlobalVideo.isWebm)
+		{
 			GlobalVideo.get().restart();
-		} 
-		else {
+		} else {
 			GlobalVideo.get().play();
 		}
 		
-		if (GlobalVideo.isWebm) {
-			bitmapData = GlobalVideo.get().webm.bitmapData;
-		}
-		else {
-			bitmapData = GlobalVideo.get().video.bitmapData;
-		}
-
 		/*if (useSound)
-			{ */
-		// vidSound = FlxG.sound.play(filePath.replace(".webm", ".ogg"));
-
-		/*new FlxTimer().start(0.1, function(tmr:FlxTimer)
-			{ */
-		vidSound.time = vidSound.length * soundMultiplier;
-		/*new FlxTimer().start(1.2, function(tmr:FlxTimer)
-			{
-				if (useSound)
-				{
-					vidSound.time = vidSound.length * soundMultiplier;
-				}
-		}, 0);*/
-		doShit = true;
-		// }, 1);
-		// }
-
-		if (autoPause && FlxG.sound.music != null && FlxG.sound.music.playing) {
-			musicPaused = true;
-			FlxG.sound.music.pause();
-		}
-		GlobalVideo.get().resume();
-	}
-
-	override function update(elapsed:Float) {
-		super.update(elapsed);
+		{*/
+			//vidSound = FlxG.sound.play(leSource.replace(".webm", ".ogg"));
 		
-		if (useSound) {
-			var wasFuckingHit;
-			if (GlobalVideo.isWebm) {
-				wasFuckingHit = GlobalVideo.get().webm.wasHitOnce;
-				soundMultiplier = GlobalVideo.get().webm.renderedCount / videoFrames;
-			}
-			else {
-				wasFuckingHit = GlobalVideo.get().video.wasHitOnce;
-				soundMultiplier = GlobalVideo.get().video.renderedCount / videoFrames;
-			}
-			if (soundMultiplier > 1) {
-				soundMultiplier = 1;
-			}
-			if (soundMultiplier < 0) {
-				soundMultiplier = 0;
-			}
-			if (doShit) {
-				var compareShit:Float = 50;
-				if (vidSound.time >= (vidSound.length * soundMultiplier) + compareShit
-					|| vidSound.time <= (vidSound.length * soundMultiplier) - compareShit)
-					vidSound.time = vidSound.length * soundMultiplier;
-			}
-			if (wasFuckingHit) {
-				if (soundMultiplier == 0) {
-					if (prevSoundMultiplier != 0) {
-						vidSound.pause();
-						vidSound.time = 0;
-					}
-				} else {
-					if (prevSoundMultiplier == 0) {
-						vidSound.resume();
+			/*new FlxTimer().start(0.1, function(tmr:FlxTimer)
+			{*/
+				vidSound.time = vidSound.length * soundMultiplier;
+				/*new FlxTimer().start(1.2, function(tmr:FlxTimer)
+				{
+					if (useSound)
+					{
 						vidSound.time = vidSound.length * soundMultiplier;
 					}
+				}, 0);*/
+				doShit = false;
+			//}, 1);
+		//}
+		var data = Main.webmHandle.webm.bitmapData;
+		videoSprite.loadGraphic(data);
+		
+		FlxG.camera.flash(FlxColor.BLACK, 0.5);
+	}
+	
+	override function update(elapsed:Float)
+	{
+		super.update(elapsed);
+		
+		if (ishit < 8) pauseShit();
+		ishit++;
+		if (useSound)
+		{
+			var wasFuckingHit = GlobalVideo.get().webm.wasHitOnce;
+			soundMultiplier = GlobalVideo.get().webm.renderedCount / videoFrames;
+			
+			if (soundMultiplier > 1)
+			{
+				soundMultiplier = 1;
+			}
+			if (soundMultiplier < 0)
+			{
+				soundMultiplier = 0;
+			}
+			if (doShit)
+			{
+				var compareShit:Float = 50;
+				if (vidSound.time >= (vidSound.length * soundMultiplier) + compareShit || vidSound.time <= (vidSound.length * soundMultiplier) - compareShit)
+					vidSound.time = vidSound.length * soundMultiplier;
+			}
+			if (wasFuckingHit)
+			{
+			if (soundMultiplier == 0)
+			{
+				if (prevSoundMultiplier != 0)
+				{
+					vidSound.pause();
+					vidSound.time = 0;
 				}
-				prevSoundMultiplier = soundMultiplier;
+			} else {
+				if (prevSoundMultiplier == 0)
+				{
+					vidSound.resume();
+					vidSound.time = vidSound.length * soundMultiplier;
+				}
+			}
+			prevSoundMultiplier = soundMultiplier;
 			}
 		}
 		
-		if (notDone) {
+		if (notDone)
+		{
 			FlxG.sound.music.volume = 0;
 		}
-		
 		GlobalVideo.get().update(elapsed);
 
-		if (controls.ACCEPT || GlobalVideo.get().ended || GlobalVideo.get().stopped) {
+		if (controls.RESET)
+		{
+			GlobalVideo.get().restart();
+		}
+		
+		if (FlxG.keys.justPressed.P)
+		{
+			pauseShit();
+		}
+		
+		if (controls.ACCEPT || GlobalVideo.get().ended || GlobalVideo.get().stopped)
+		{
+			txt.visible = false;
 			GlobalVideo.get().hide();
 			GlobalVideo.get().stop();
 		}
-
-		if (controls.ACCEPT || GlobalVideo.get().ended) {
+		
+		if (controls.ACCEPT || GlobalVideo.get().ended)
+		{
 			notDone = false;
 			FlxG.sound.music.volume = fuckingVolume;
+			txt.text = pauseText;
 			FlxG.autoPause = true;
-			GlobalVideo.get().stop();
-			if (musicPaused) {
-				musicPaused = false;
-				FlxG.sound.music.resume();
-			}
-			GlobalVideo.get().source("assets/videos/00placeholder/placeholder.webm");
 			FlxG.switchState(transClass);
+			//transFunction();
 		}
-
-		if (GlobalVideo.get().played || GlobalVideo.get().restarted) {
+		
+		if (GlobalVideo.get().played || GlobalVideo.get().restarted)
+		{
 			GlobalVideo.get().show();
 		}
-
+		
 		GlobalVideo.get().restarted = false;
 		GlobalVideo.get().played = false;
 		GlobalVideo.get().stopped = false;
 		GlobalVideo.get().ended = false;
+	}
+	
+	public function pauseShit() 
+	{
+		
+			txt.text = pauseText;
+			trace("PRESSED PAUSE");
+			GlobalVideo.get().togglePause();
+			if (GlobalVideo.get().paused)
+			{
+				videoSprite.alpha = 0.5;
+				GlobalVideo.get().alpha();
+			} else {
+				videoSprite.alpha = 1;
+				GlobalVideo.get().unalpha();
+				txt.text = defaultText;
+			}
 	}
 }

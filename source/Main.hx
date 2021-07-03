@@ -12,6 +12,7 @@ import openfl.Lib;
 import openfl.display.FPS;
 import openfl.display.Sprite;
 import openfl.events.Event;
+import webm.*;
 
 class Main extends Sprite
 {
@@ -22,6 +23,7 @@ class Main extends Sprite
 	var framerate:Int = 120; // How many frames per second the game should run at.
 	var skipSplash:Bool = true; // Whether to skip the flixel splash screen that appears in release mode.
 	var startFullscreen:Bool = false; // Whether to start the game in fullscreen on desktop targets
+	public static var webmHandle:WebmHandler = new WebmHandler();
 
 	public static var watermarks = true; // Whether to put Kade Engine liteartly anywhere
 
@@ -82,9 +84,9 @@ class Main extends Sprite
 		game = new FlxGame(gameWidth, gameHeight, initialState, zoom, framerate, framerate, skipSplash, startFullscreen);
 		#end
 		addChild(game);
-
+		
+		
 		var ourSource:String = "assets/videos/00placeholder/placeholder.webm";
-
 		#if web
 		var str1:String = "HTML CRAP";
 		var vHandler = new VideoHandler();
@@ -96,13 +98,16 @@ class Main extends Sprite
 		vHandler.source(ourSource);
 		#elseif desktop
 		var str1:String = "WEBM SHIT"; 
-		var webmHandle = new WebmHandler();
+		webmHandle = new WebmHandler();
+		WebmPlayer.SKIP_STEP_LIMIT = 90;
 		webmHandle.source(ourSource);
 		webmHandle.makePlayer();
 		webmHandle.webm.name = str1;
-		addChild(webmHandle.webm);
+		
+		//addChild(webmHandle.webm);
 		GlobalVideo.setWebm(webmHandle);
 		#end
+
 		
 		#if !mobile
 		fpsCounter = new FPS(10, 3, 0xFFFFFF);
