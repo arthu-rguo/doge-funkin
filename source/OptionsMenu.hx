@@ -29,39 +29,37 @@ class OptionsMenu extends MusicBeatState
 			new DFJKOption(controls),
 			new DownscrollOption("Change the layout of the strumline."),
 			new GhostTapOption("Tapping a direction doesn't give you a miss."),
-			// new Judgement("Customize your Hit Timings. (LEFT or RIGHT)"),
 			#if desktop
 			new FPSCapOption("Cap your FPS."),
 			#end
+			new ResetButtonOption("Toggle pressing R to instantly game-over.")
+			// new OffsetMenu("Get a note offset based off of your inputs!"),
+			// new CustomizeGameplay("Drag'n'drop gameplay modules around to your preference."),
 			// new ScrollSpeedOption("Change your scroll speed. (1 = Chart dependent)"),
 			// new AccuracyDOption("Change how accuracy is calculated. (Accurate = Simple, Complex = Milisecond Based)"),
-			new ResetButtonOption("Toggle pressing R to instantly game-over."),
-			// new OffsetMenu("Get a note offset based off of your inputs!"),
-			// new CustomizeGameplay("Drag'n'drop gameplay modules around to your preference.")
+			// new Judgement("Customize your Hit Timings. (LEFT or RIGHT)"),
 		]),
 		new OptionCategory("Appearance", [
 			new DistractionsAndEffectsOption("Toggle stage distractions that can hinder your gameplay."),
 			new CamZoomOption("Toggle the camera zooming in on the beat."),
-			#if desktop
-			// new RainbowFPSOption("Make the FPS counter rainbow."),
 			new AccuracyOption("Display advanced accuracy information."),
 			new NPSDisplayOption("Display your current notes per second."),
 			new SongPositionOption("Show the song's current position as a bar."),
-			new CpuStrums("CPU's strumline lights up when a note hits it."),
-			#end
+			new CpuStrums("CPU's strumline lights up when a note hits it.")
+			// new RainbowFPSOption("Make the FPS counter rainbow."),
 		]),
 		
 		new OptionCategory("Misc", [
-			#if desktop
 			new FPSOption("Toggle the FPS counter."),
+			#if desktop
 			new ReplayOption("View replays."),
 			#end
 			new FlashingLightsOption("Toggle flashing lights that can cause epileptic seizures and strain."),
+			new Optimization("No backgrounds, no characters, centered notes, no player 2."),
+			new BotPlay("Showcase your charts and mods with autoplay."),
 			// new WatermarkOption("Enable and disable all watermarks from the engine."),
 			// new ScoreScreen("Show the score screen after the end of a song."),
 			// new ShowInput("Display every single input in the score screen."),
-			new Optimization("No backgrounds, no characters, centered notes, no player 2."),
-			new BotPlay("Showcase your charts and mods with autoplay."),
 		])
 		
 	];

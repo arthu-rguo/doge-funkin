@@ -2807,7 +2807,7 @@ class PlayState extends MusicBeatState
 			});
 		}
 
-		if (!inCutscene)
+		if (!inCutscene && songStarted)
 			keyShit();
 
 
