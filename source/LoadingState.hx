@@ -36,21 +36,20 @@ class LoadingState extends MusicBeatState
 	
 	override function create()
 	{
-		logo = new FlxSprite(380, -75);
+		logo = new FlxSprite(380, -25);
 		logo.frames = Paths.getSparrowAtlas('logoBumpin');
 		logo.antialiasing = true;
-		logo.animation.addByPrefix('bump', 'logo bumpin', 24);
-		logo.animation.play('bump');
+		logo.animation.addByPrefix('bump', 'logo bumpin', 24, false);
+		logo.angle = 4;
 		logo.updateHitbox();
 		// logoBl.screenCenter();
 		// logoBl.color = FlxColor.BLACK;
 
-		dogeDance = new FlxSprite(-10, 130);
+		dogeDance = new FlxSprite(-10, 180);
 		dogeDance.frames = Paths.getSparrowAtlas('dogeDanceTitle');
 		dogeDance.animation.addByPrefix('dance', 'doge', 24);
 		dogeDance.antialiasing = true;
 		add(dogeDance);
-		dogeDance.animation.play('dance');
 		add(logo);
 		
 		initSongsManifest().onComplete
@@ -104,13 +103,10 @@ class LoadingState extends MusicBeatState
 		}
 	}
 	
-	override function beatHit()
-	{
-		super.beatHit();
-		
-		logo.animation.play('bump');
-		dogeDance.animation.play('dance');
-	}
+	// override function beatHit()
+	// {
+	// 	super.beatHit();
+	// }
 	
 	override function update(elapsed:Float)
 	{

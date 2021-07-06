@@ -173,11 +173,11 @@ class TitleState extends MusicBeatState
 		// bg.updateHitbox();
 		add(bg);
 
-		logoBl = new FlxSprite(380, -75);
+		logoBl = new FlxSprite(380, 1000);
 		logoBl.frames = Paths.getSparrowAtlas('logoBumpin');
 		logoBl.antialiasing = true;
-		logoBl.animation.addByPrefix('bump', 'logo bumpin', 24);
-		logoBl.animation.play('bump');
+		logoBl.animation.addByPrefix('bump', 'logo bumpin', 24, false);
+		logoBl.angle = 4;
 		logoBl.updateHitbox();
 		// logoBl.screenCenter();
 		// logoBl.color = FlxColor.BLACK;
@@ -188,6 +188,7 @@ class TitleState extends MusicBeatState
 		dogeDance.antialiasing = true;
 		add(dogeDance);
 		add(logoBl);
+		dogeDance.animation.play('dance');
 
 		titleText = new FlxSprite(150, FlxG.height * 0.78);
 		titleText.frames = Paths.getSparrowAtlas('titleEnter');
@@ -361,8 +362,8 @@ class TitleState extends MusicBeatState
 	{
 		super.beatHit();
 
-		logoBl.animation.play('bump');
-		dogeDance.animation.play('dance');
+		logoBl.animation.play('bump', true);
+		// dogeDance.animation.play('dance', true);
 
 		FlxG.log.add(curBeat);
 
@@ -412,6 +413,17 @@ class TitleState extends MusicBeatState
 
 			FlxG.camera.flash(FlxColor.WHITE, 4);
 			remove(credGroup);
+
+			FlxTween.tween(logoBl,{y: -75}, 2, {ease: FlxEase.expoOut});
+
+			// new FlxTimer().start(0.01, function(tmr:FlxTimer)
+			// {
+			// 	if(logoBl.angle == -4) 
+			// 		FlxTween.angle(logoBl, logoBl.angle, 4, 4, {ease: FlxEase.quadInOut});
+			// 	if (logoBl.angle == 4) 
+			// 		FlxTween.angle(logoBl, logoBl.angle, -4, 4, {ease: FlxEase.quadInOut});
+			// }, 0);
+
 			skippedIntro = true;
 		}
 	}
