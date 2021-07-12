@@ -114,7 +114,7 @@ class Highscore
 				return 2;
 			case 'GFC':
 				return 3;
-			case 'MFC':
+			case 'SFC':
 				return 4;
 			default:
 				return 0;

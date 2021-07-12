@@ -92,9 +92,12 @@ class StoryMenuState extends MusicBeatState
 
 		if (FlxG.sound.music != null)
 		{
-			if (!FlxG.sound.music.playing)
+			if (!FlxG.sound.music.playing) {
 				FlxG.sound.playMusic(Paths.music('freakyMenu'));
+				Conductor.changeBPM(110);
+			}
 		}
+
 
 		persistentUpdate = persistentDraw = true;
 
@@ -318,6 +321,9 @@ class StoryMenuState extends MusicBeatState
 			FlxG.switchState(new MainMenuState());
 		}
 
+		if (FlxG.sound.music != null)
+			Conductor.songPosition = FlxG.sound.music.time;
+
 		super.update(elapsed);
 	}
 
@@ -474,4 +480,13 @@ class StoryMenuState extends MusicBeatState
 		intendedScore = Highscore.getWeekScore(curWeek, curDifficulty);
 		#end
 	}
+
+	override function beatHit()
+		{
+			super.beatHit();
+	
+			grpWeekCharacters.members[0].bopHead();
+			grpWeekCharacters.members[1].bopHead();
+			grpWeekCharacters.members[2].bopHead();
+		}
 }

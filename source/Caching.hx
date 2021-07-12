@@ -44,6 +44,7 @@ class Caching extends MusicBeatState
         kadeLogo.y -= kadeLogo.height / 2 + 100;
         text.y -= kadeLogo.height / 2 - 125;
         kadeLogo.setGraphicSize(Std.int(kadeLogo.width * 0.6));
+        kadeLogo.antialiasing = true;
         kadeLogo.alpha = 0;
 
         add(kadeLogo);
