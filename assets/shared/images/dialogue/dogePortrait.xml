@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="dogePortrait.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="doge icon enter0000" x="0" y="0" width="1280" height="721" frameX="0" frameY="-117" frameWidth="1280" frameHeight="838"/>
+	<SubTexture name="doge icon enter0001" x="0" y="0" width="1280" height="721" frameX="0" frameY="-21" frameWidth="1280" frameHeight="838"/>
+	<SubTexture name="doge icon enter0002" x="0" y="0" width="1280" height="721" frameX="0" frameY="0" frameWidth="1280" frameHeight="838"/>
+	<SubTexture name="doge icon enter0003" x="0" y="0" width="1280" height="721" frameX="0" frameY="-16" frameWidth="1280" frameHeight="838"/>
+	<SubTexture name="doge icon enter0004" x="0" y="0" width="1280" height="721" frameX="0" frameY="-29" frameWidth="1280" frameHeight="838"/>
+	<SubTexture name="doge icon exit0000" x="0" y="0" width="1280" height="721" frameX="0" frameY="-29" frameWidth="1280" frameHeight="838"/>
+	<SubTexture name="doge icon exit0001" x="0" y="0" width="1280" height="721" frameX="0" frameY="-16" frameWidth="1280" frameHeight="838"/>
+	<SubTexture name="doge icon exit0002" x="0" y="0" width="1280" height="721" frameX="0" frameY="0" frameWidth="1280" frameHeight="838"/>
+	<SubTexture name="doge icon exit0003" x="0" y="0" width="1280" height="721" frameX="0" frameY="-21" frameWidth="1280" frameHeight="838"/>
+	<SubTexture name="doge icon exit0004" x="0" y="0" width="1280" height="721" frameX="0" frameY="-117" frameWidth="1280" frameHeight="838"/>
+	<SubTexture name="doge icon exit0005" x="0" y="0" width="1" height="1"/>
+</TextureAtlas>

@@ -78,7 +78,7 @@ class Main extends Sprite
 		}
 
 		#if cpp
-		initialState = Caching;
+		//initialState = Caching; i dont give a shit about fast loading times we saving my mf ram
 		game = new FlxGame(gameWidth, gameHeight, initialState, zoom, framerate, framerate, skipSplash, startFullscreen);
 		#else
 		game = new FlxGame(gameWidth, gameHeight, initialState, zoom, framerate, framerate, skipSplash, startFullscreen);
