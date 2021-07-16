@@ -1,5 +1,4 @@
 import flixel.input.gamepad.FlxGamepad;
-import lime.app.Application;
 import openfl.Lib;
 import flixel.FlxG;
 

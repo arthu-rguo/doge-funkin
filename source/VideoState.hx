@@ -4,15 +4,10 @@ import flixel.FlxState;
 import flixel.FlxG;
 
 import flixel.FlxSprite;
-import flixel.FlxSubState;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
-import flixel.util.FlxTimer;
-import lime.app.Application;
 import flixel.system.FlxSound;
 import openfl.utils.Assets;
-
-import openfl.Lib;
 
 using StringTools;
 
