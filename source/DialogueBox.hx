@@ -79,11 +79,12 @@ class DialogueBox extends FlxSpriteGroup
 		FlxTween.tween(bgFade, {alpha: 0.75}, 2, {ease: FlxEase.expoInOut});
 		FlxTween.tween(box, {alpha: 1}, 0.5, {ease: FlxEase.expoInOut});
 
-		swagDialogue = new FlxTypeText(240, 500, Std.int(FlxG.width * 0.6), "", 32);
-		swagDialogue.font = 'Comic Sans MS Bold';
-		swagDialogue.color = 0xFFFFFFFF;
+		swagDialogue = new FlxTypeText(0, 490, Std.int(FlxG.width * 0.7), "", 56);
+		swagDialogue.font = 'Apple Kid Regular';
+		swagDialogue.color = 0xFFEDEEEE;
 		swagDialogue.sounds = [FlxG.sound.load(Paths.sound('pixelText'), 0.6)];
 		add(swagDialogue);
+		swagDialogue.screenCenter(X);
 
 		dialogue = new Alphabet(0, 80, "", false, true);
 		// dialogue.x = 90;
@@ -106,8 +107,6 @@ class DialogueBox extends FlxSpriteGroup
 		if (PlayerSettings.player1.controls.ACCEPT && dialogueStarted == true)
 		{
 			remove(dialogue);
-				
-			FlxG.sound.play(Paths.sound('clickText'), 0.8);
 
 			if (dialogueList[1] == null && dialogueList[0] != null)
 			{
@@ -171,11 +170,9 @@ class DialogueBox extends FlxSpriteGroup
 
 			switch (PlayState.SONG.song.toLowerCase()) {
 				case "feet" | "toes" | "sole":
-					swagDialogue.font = 'Comic Sans MS Bold';
-					swagDialogue.sounds = [FlxG.sound.load(Paths.sound('pixelText'), 0.6)];
+					swagDialogue.sounds = [FlxG.sound.load(Paths.sound('dogeText'), 0.6), FlxG.sound.load(Paths.sound('dogeText'), 0.7), FlxG.sound.load(Paths.sound('dogeText'), 0.8)];
 				
 				case "fire truck" | "moster truck" | "all bark no bite" | "scrapped":
-					swagDialogue.font = 'Comic Sans MS Bold';
 					swagDialogue.sounds = [FlxG.sound.load(Paths.sound('pixelText'), 0.6)];
 			}
 		}
@@ -189,11 +186,10 @@ class DialogueBox extends FlxSpriteGroup
 			if (portraitLeft.animation.name != "exit")
 				portraitLeft.animation.play('exit');
 
-			swagDialogue.font = 'Pixel Arial 11 Bold';
-			swagDialogue.sounds = [FlxG.sound.load(Paths.sound('pixelText'), 0.6)];
+			swagDialogue.sounds = [FlxG.sound.load(Paths.sound('bfText'), 0.6), FlxG.sound.load(Paths.sound('bfText'), 0.7), FlxG.sound.load(Paths.sound('bfText'), 0.8)];
 		}
 
-		swagDialogue.start(0.04, true);
+		swagDialogue.start(0.05, true);
 	}
 
 	function cleanDialog():Void

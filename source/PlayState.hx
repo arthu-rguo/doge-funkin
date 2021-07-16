@@ -347,6 +347,8 @@ class PlayState extends MusicBeatState
 		{
 			case 'feet':
 				dialogue = CoolUtil.coolTextFile(Paths.txt('feet/feetDialogue'));
+			case 'fire-truck':
+				dialogue = CoolUtil.coolTextFile(Paths.txt('fire-truck/fire-truckDialogue'));
 			case 'scrapped':
 				dialogue = CoolUtil.coolTextFile(Paths.txt('scrapped/scrappedDialogue'));
 		}
@@ -1199,7 +1201,7 @@ class PlayState extends MusicBeatState
 		{
 			switch (StringTools.replace(curSong," ", "-").toLowerCase())
 			{
-				case 'feet':
+				case 'feet' | 'fire-truck':
 					dialogueIntro(doof);
 				default:
 					startCountdown();
