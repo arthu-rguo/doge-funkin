@@ -345,10 +345,10 @@ class PlayState extends MusicBeatState
 		//dialogue shit
 		switch (songLowercase)
 		{
-			case 'senpai' | 'roses' | 'thorns':
-				dialogue = CoolUtil.coolTextFile(Paths.txt('senpai/senpaiDialogue'));
 			case 'feet':
 				dialogue = CoolUtil.coolTextFile(Paths.txt('feet/feetDialogue'));
+			case 'scrapped':
+				dialogue = CoolUtil.coolTextFile(Paths.txt('scrapped/scrappedDialogue'));
 		}
 
 		//defaults if no stage was found in chart
@@ -1207,7 +1207,10 @@ class PlayState extends MusicBeatState
 		}
 		else
 		{
-			startCountdown();
+			if (SONG.song == "Scrapped") 
+				dialogueIntro(doof);
+			else
+				startCountdown();
 		}
 
 		if (!loadRep)
@@ -1244,11 +1247,10 @@ class PlayState extends MusicBeatState
 
 	function startCountdown():Void
 	{
-		inCutscene = false;
-
 		generateStaticArrows(0);
 		generateStaticArrows(1);
 
+		inCutscene = false;
 
 		#if windows
 		// pre lowercasing the song name (startCountdown)
@@ -1847,12 +1849,12 @@ class PlayState extends MusicBeatState
 			babyArrow.updateHitbox();
 			babyArrow.scrollFactor.set();
 
-			if (!isStoryMode)
-			{
+			if (!isStoryMode || inCutscene) {
 				babyArrow.y -= 10;
 				babyArrow.alpha = 0;
 				FlxTween.tween(babyArrow, {y: babyArrow.y + 10, alpha: 1}, 1, {ease: FlxEase.circOut, startDelay: 0.5 + (0.2 * i)});
 			}
+			
 
 			babyArrow.ID = i;
 
@@ -2473,9 +2475,9 @@ class PlayState extends MusicBeatState
 
 			// FlxG.switchState(new GameOverState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 		}
- 		if (FlxG.save.data.resetButton)
+ 		if (FlxG.save.data.resetButton && !inCutscene)
 		{
-			if(FlxG.keys.justPressed.R && !inCutscene)
+			if(FlxG.keys.justPressed.R)
 				{
 					boyfriend.stunned = true;
 
@@ -2831,7 +2833,7 @@ class PlayState extends MusicBeatState
 					else
 					{
 						FlxG.sound.playMusic(Paths.music('freakyMenu'));
-
+						Conductor.changeBPM(110);
 						// END-OF-WEEK CUTSCENES
 						#if desktop
 						FlxTransitionableState.skipNextTransIn = true;

@@ -40,13 +40,6 @@ class DialogueBox extends FlxSpriteGroup
 	{
 		super();
 
-		switch (PlayState.SONG.song.toLowerCase())
-		{
-			case 'feet':
-				FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
-				FlxG.sound.music.fadeIn(1, 0, 0.2);
-		}
-
 		bgFade = new FlxSprite().makeGraphic(Std.int(FlxG.width * 1.3), Std.int(FlxG.height * 1.3), 0xFF000000);
 		bgFade.scrollFactor.set();
 		bgFade.alpha = 0;
@@ -105,6 +98,8 @@ class DialogueBox extends FlxSpriteGroup
 		if (!dialogueStarted)
 		{
 			startDialogue();
+			FlxG.sound.playMusic(Paths.music('breakfast'), 0);
+			FlxG.sound.music.fadeIn(1, 0, 0.2);
 			dialogueStarted = true;
 		}
 
