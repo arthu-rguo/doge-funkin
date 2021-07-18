@@ -313,12 +313,8 @@ class PlayState extends MusicBeatState
 		//dialogue shit
 		switch (songLowercase)
 		{
-			case 'feet':
-				dialogue = CoolUtil.coolTextFile(Paths.txt('feet/feetDialogue'));
-			case 'fire-truck':
-				dialogue = CoolUtil.coolTextFile(Paths.txt('fire-truck/fire-truckDialogue'));
-			case 'scrapped':
-				dialogue = CoolUtil.coolTextFile(Paths.txt('scrapped/scrappedDialogue'));
+			case 'feet' | 'toes' | 'sole' | 'fire-truck' | 'moster-truck' | 'scrapped':
+				dialogue = CoolUtil.coolTextFile(Paths.txt(songLowercase + '/dialogue'));
 		}
 
 		//defaults if no stage was found in chart
@@ -1169,7 +1165,7 @@ class PlayState extends MusicBeatState
 		{
 			switch (StringTools.replace(curSong," ", "-").toLowerCase())
 			{
-				case 'feet' | 'fire-truck':
+				case 'feet' | 'toes' | 'sole' | 'fire-truck' | 'moster-truck':
 					dialogueIntro(doof);
 				default:
 					startCountdown();

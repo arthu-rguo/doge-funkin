@@ -29,6 +29,7 @@ class DialogueBox extends FlxSpriteGroup
 
 	var portraitLeft:FlxSprite;
 	var portraitRight:FlxSprite;
+	var portraitMid:FlxSprite;
 
 	var handSelect:FlxSprite;
 	var bgFade:FlxSprite;
@@ -68,6 +69,14 @@ class DialogueBox extends FlxSpriteGroup
 		portraitRight.scrollFactor.set();
 		add(portraitRight);
 		portraitRight.visible = false;
+
+		portraitMid = new FlxSprite(0, -20);
+		portraitMid.frames = Paths.getSparrowAtlas('dialogue/gfPortrait');
+		portraitMid.animation.addByPrefix('enter', 'gf icon enter', 24, false);
+		portraitMid.animation.addByPrefix('exit', 'gf icon exit', 24, false);
+		portraitMid.scrollFactor.set();
+		add(portraitMid);
+		portraitMid.visible = false;
 		
 		box = new FlxSprite().loadGraphic(Paths.image('dialogue/dialogueBox'));
 		box.alpha = 0;
@@ -76,10 +85,9 @@ class DialogueBox extends FlxSpriteGroup
 		FlxTween.tween(bgFade, {alpha: 0.75}, 2, {ease: FlxEase.expoInOut});
 		FlxTween.tween(box, {alpha: 1}, 0.5, {ease: FlxEase.expoInOut});
 
-		swagDialogue = new FlxTypeText(0, 490, Std.int(FlxG.width * 0.7), "", 56);
-		swagDialogue.font = 'Apple Kid Regular';
+		swagDialogue = new FlxTypeText(0, 490, Std.int(FlxG.width * 0.7), "", 24);
+		swagDialogue.font = 'Pixel Arial 11 Bold';
 		swagDialogue.color = 0xFFEDEEEE;
-		swagDialogue.sounds = [FlxG.sound.load(Paths.sound('pixelText'), 0.6)];
 		add(swagDialogue);
 		swagDialogue.screenCenter(X);
 
@@ -97,7 +105,7 @@ class DialogueBox extends FlxSpriteGroup
 		{
 			startDialogue();
 			FlxG.sound.playMusic(Paths.music('breakfast'), 0);
-			FlxG.sound.music.fadeIn(1, 0, 0.2);
+			FlxG.sound.music.fadeIn(1, 0, 0.1);
 			dialogueStarted = true;
 		}
 
@@ -120,10 +128,11 @@ class DialogueBox extends FlxSpriteGroup
 					if (portraitLeft.animation.name != "exit")
 						portraitLeft.animation.play('exit');
 
+					if (portraitMid.animation.name != "exit")
+						portraitMid.animation.play('exit');
+
 					FlxTween.tween(bgFade, {alpha: 0}, 2, {ease: FlxEase.expoInOut});
 					FlxTween.tween(box, {alpha: 0}, 0.5, {ease: FlxEase.expoInOut});
-					FlxTween.tween(portraitLeft, {alpha: 0}, 0.25, {ease: FlxEase.expoInOut});
-					FlxTween.tween(portraitRight, {alpha: 0}, 0.25, {ease: FlxEase.expoInOut});
 					FlxTween.tween(swagDialogue, {alpha: 0}, 0.5, {ease: FlxEase.expoInOut});
 
 					new FlxTimer().start(1, function(tmr:FlxTimer)
@@ -165,12 +174,14 @@ class DialogueBox extends FlxSpriteGroup
 			if (portraitRight.animation.name != "exit")
 				portraitRight.animation.play('exit');
 
+			if (portraitMid.animation.name != "exit")
+				portraitMid.animation.play('exit');
+
 			switch (PlayState.SONG.song.toLowerCase()) {
 				case "feet" | "toes" | "sole":
-					swagDialogue.sounds = [FlxG.sound.load(Paths.sound('dogeText'), 0.6), FlxG.sound.load(Paths.sound('dogeText'), 0.7), FlxG.sound.load(Paths.sound('dogeText'), 0.8)];
-				
+					swagDialogue.sounds = [FlxG.sound.load(Paths.sound('dogeText'), 0.6), FlxG.sound.load(Paths.sound('dogeText'), 0.8)];
 				case "fire truck" | "moster truck" | "all bark no bite" | "scrapped":
-					swagDialogue.sounds = [FlxG.sound.load(Paths.sound('pixelText'), 0.6)];
+					swagDialogue.sounds = [FlxG.sound.load(Paths.sound('pixelText'), 0.6), FlxG.sound.load(Paths.sound('pixelText'), 0.8)];
 			}
 		}
 		if (curCharacter == 'bf') {
@@ -183,10 +194,28 @@ class DialogueBox extends FlxSpriteGroup
 			if (portraitLeft.animation.name != "exit")
 				portraitLeft.animation.play('exit');
 
-			swagDialogue.sounds = [FlxG.sound.load(Paths.sound('bfText'), 0.6), FlxG.sound.load(Paths.sound('bfText'), 0.7), FlxG.sound.load(Paths.sound('bfText'), 0.8)];
+			if (portraitMid.animation.name != "exit")
+				portraitMid.animation.play('exit');
+
+			swagDialogue.sounds = [FlxG.sound.load(Paths.sound('bfText'), 0.6), FlxG.sound.load(Paths.sound('bfText'), 0.8)];
+		}
+		if (curCharacter == 'gf') {
+
+			portraitMid.visible = true;
+
+			if (portraitMid.animation.name != "enter")
+				portraitMid.animation.play('enter');
+			
+			if (portraitLeft.animation.name != "exit")
+				portraitLeft.animation.play('exit');
+
+			if (portraitRight.animation.name != "exit")
+				portraitRight.animation.play('exit');
+
+			swagDialogue.sounds = [FlxG.sound.load(Paths.sound('gfText'), 0.6), FlxG.sound.load(Paths.sound('gfText'), 0.8)];
 		}
 
-		swagDialogue.start(0.05, true);
+		swagDialogue.start(0.04, true);
 	}
 
 	function cleanDialog():Void
