@@ -107,7 +107,7 @@ class MenuCharacter extends FlxSprite
 			if (animation.name == "bfConfirm")
 				return;
 			//no spooky nor girlfriend so we do da normal animation
-			animation.play(character, true);
+			animation.play(character);
 		}
 
 		if (LastFrame) {

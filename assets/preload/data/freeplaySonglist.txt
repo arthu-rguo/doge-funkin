@@ -4,4 +4,5 @@ Toes:doge:1
 Sole:doge:1
 Fire Truck:walter:2
 Moster Truck:walter:2
+All Bark No Bite:walter:2
 Scrapped:walter:2

@@ -2878,7 +2878,7 @@ class PlayState extends MusicBeatState
 					#if desktop
 					switch(PlayState.SONG.song)
 					{
-						case 'Scrapped':
+						case 'All Bark No Bite' | 'Scrapped':
 							LoadingState.loadAndSwitchState(new VideoState("assets/videos/walter/vid.webm", new PlayState()));
 
 						default:
@@ -4035,8 +4035,9 @@ class PlayState extends MusicBeatState
 			case "derbyfire":
 				// wtf scary walter...
 				if (dad.animation.curAnim.name.startsWith("sing")) {
-					boyfriend.playAnim('scared', true);
 					gf.playAnim('scared', true);
+					if (curBeat >= 380)
+						boyfriend.playAnim('scared', true);
 				}
 		}
 

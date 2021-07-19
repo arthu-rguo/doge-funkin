@@ -104,8 +104,10 @@ class DialogueBox extends FlxSpriteGroup
 		if (!dialogueStarted)
 		{
 			startDialogue();
-			FlxG.sound.playMusic(Paths.music('breakfast'), 0);
-			FlxG.sound.music.fadeIn(1, 0, 0.1);
+			if (PlayState.SONG.song == 'Feet') {
+				FlxG.sound.playMusic(Paths.music('breakfast'), 0);
+				FlxG.sound.music.fadeIn(1, 0, 0.1);
+			}
 			dialogueStarted = true;
 		}
 
@@ -212,7 +214,7 @@ class DialogueBox extends FlxSpriteGroup
 			if (portraitRight.animation.name != "exit")
 				portraitRight.animation.play('exit');
 
-			swagDialogue.sounds = [FlxG.sound.load(Paths.sound('gfText'), 0.6), FlxG.sound.load(Paths.sound('gfText'), 0.8)];
+			swagDialogue.sounds = [FlxG.sound.load(Paths.sound('gfText'), 0.7), FlxG.sound.load(Paths.sound('gfText'), 0.9)];
 		}
 
 		swagDialogue.start(0.04, true);
