@@ -2878,8 +2878,8 @@ class PlayState extends MusicBeatState
 					#if desktop
 					switch(PlayState.SONG.song)
 					{
-						case 'All Bark No Bite' | 'Scrapped':
-							LoadingState.loadAndSwitchState(new VideoState("assets/videos/walter/vid.webm", new PlayState()));
+						case 'whatever':
+							LoadingState.loadAndSwitchState(new VideoState("assets/videos/", new PlayState()));
 
 						default:
 							LoadingState.loadAndSwitchState(new PlayState());
