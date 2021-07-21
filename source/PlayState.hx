@@ -946,7 +946,7 @@ class PlayState extends MusicBeatState
 				boyfriend.y += 220;
 				gf.x += 180;
 				gf.y += 300;
-			case 'derby':
+			case 'derby' | 'derbyfire':
 				boyfriend.x += 50;
 				dad.x -= 50;
 				gf.y -= 30;
@@ -3102,7 +3102,9 @@ class PlayState extends MusicBeatState
 	
 			// currentTimingShown.cameras = [camHUD];
 			// comboSpr.cameras = [camHUD];
-			// rating.cameras = [camHUD];
+
+			if (PlayStateChangeables.Optimize)
+				rating.cameras = [camHUD];
 
 			var seperatedScore:Array<Int> = [];
 	
@@ -3133,7 +3135,9 @@ class PlayState extends MusicBeatState
 				numScore.screenCenter();
 				numScore.x = coolText.x + (43 * daLoop) - 60;
 				numScore.y += 220;
-				// numScore.cameras = [camHUD];
+
+				if (PlayStateChangeables.Optimize)
+					numScore.cameras = [camHUD];
 
 				if (!curStage.startsWith('school'))
 				{
@@ -3926,8 +3930,8 @@ class PlayState extends MusicBeatState
 			// Conductor.changeBPM(SONG.bpm);
 
 			// Dad doesnt interupt his own notes
-			if (SONG.notes[Math.floor(curStep / 16)].mustHitSection && dad.curCharacter != 'gf')
-				dad.dance();
+			// if (SONG.notes[Math.floor(curStep / 16)].mustHitSection && dad.curCharacter != 'gf')
+			// 	dad.dance();
 		}
 		// FlxG.log.add('change bpm' + SONG.notes[Std.int(curStep / 16)].changeBPM);
 		wiggleShit.update(Conductor.crochet);
@@ -4034,11 +4038,13 @@ class PlayState extends MusicBeatState
 				}
 			case "derbyfire":
 				// wtf scary walter...
-				if (dad.animation.curAnim.name.startsWith("sing")) {
+				if (dad.animation.curAnim.name.startsWith("sing") && curBeat >= 380) {
 					gf.playAnim('scared', true);
-					if (curBeat >= 380)
-						boyfriend.playAnim('scared', true);
-				}
+					boyfriend.playAnim('scared', true);
+					if (curBeat < 384) 
+						health *= 0.6;
+				}	
+				
 		}
 
 		if (isHalloween && FlxG.random.bool(10) && curBeat > lightningStrikeBeat + lightningOffset)

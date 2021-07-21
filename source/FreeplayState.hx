@@ -1,12 +1,16 @@
 package;
 
+import Song.SwagSong;
 import flixel.input.gamepad.FlxGamepad;
+import flash.text.TextField;
 import flixel.FlxG;
 import flixel.FlxSprite;
+import flixel.addons.display.FlxGridOverlay;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
+import lime.utils.Assets;
 
 
 #if windows
@@ -35,6 +39,20 @@ class FreeplayState extends MusicBeatState
 
 	private var iconArray:Array<HealthIcon> = [];
 
+	public static var songData:Map<String,Array<SwagSong>> = [];
+
+	public static function loadDiff(diff:Int, format:String, name:String, array:Array<SwagSong>)
+	{
+		try 
+		{
+			array.push(Song.loadFromJson(Highscore.formatSong(format, diff), name));
+		}
+		catch(ex)
+		{
+			// do nada
+		}
+	}
+
 	override function create()
 	{
 		var initSonglist = CoolUtil.coolTextFile(Paths.txt('freeplaySonglist'));
@@ -42,8 +60,24 @@ class FreeplayState extends MusicBeatState
 		for (i in 0...initSonglist.length)
 		{
 			var data:Array<String> = initSonglist[i].split(':');
-			songs.push(new SongMetadata(data[0], Std.parseInt(data[2]), data[1]));
+			var meta = new SongMetadata(data[0], Std.parseInt(data[2]), data[1]);
+			songs.push(meta);
+			var format = StringTools.replace(meta.songName, " ", "-");
+			switch (format) {
+				case 'Dad-Battle': format = 'Dadbattle';
+				case 'Philly-Nice': format = 'Philly';
+			}
+
+			var diffs = [];
+			FreeplayState.loadDiff(0,format,meta.songName,diffs);
+			FreeplayState.loadDiff(1,format,meta.songName,diffs);
+			FreeplayState.loadDiff(2,format,meta.songName,diffs);
+			FreeplayState.songData.set(meta.songName,diffs);
+			trace('loaded diffs for ' + meta.songName);
+
 		}
+
+		//trace("\n" + diffList);
 
 		/* 
 			if (FlxG.sound.music != null)
@@ -128,17 +162,13 @@ class FreeplayState extends MusicBeatState
 		// JUST DOIN THIS SHIT FOR TESTING!!!
 		/* 
 			var md:String = Markdown.markdownToHtml(Assets.getText('CHANGELOG.md'));
-
 			var texFel:TextField = new TextField();
 			texFel.width = FlxG.width;
 			texFel.height = FlxG.height;
 			// texFel.
 			texFel.htmlText = md;
-
 			FlxG.stage.addChild(texFel);
-
 			// scoreText.textField.htmlText = md;
-
 			trace(md);
 		 */
 
@@ -235,14 +265,19 @@ class FreeplayState extends MusicBeatState
 				case 'Dad-Battle': songFormat = 'Dadbattle';
 				case 'Philly-Nice': songFormat = 'Philly';
 			}
-			
-			trace(songs[curSelected].songName);
+			var hmm;
+			try
+			{
+				hmm = songData.get(songs[curSelected].songName)[curDifficulty];
+				if (hmm == null)
+					return;
+			}
+			catch(ex)
+			{
+				return;
+			}
 
-			var poop:String = Highscore.formatSong(songFormat, curDifficulty);
-
-			trace(poop);
-			
-			PlayState.SONG = Song.loadFromJson(poop, songs[curSelected].songName);
+			PlayState.SONG = hmm;
 			PlayState.isStoryMode = false;
 			PlayState.storyDifficulty = curDifficulty;
 			PlayState.storyWeek = songs[curSelected].week;
@@ -310,6 +345,16 @@ class FreeplayState extends MusicBeatState
 		#if PRELOAD_ALL
 		FlxG.sound.playMusic(Paths.inst(songs[curSelected].songName), 0);
 		#end
+
+		var hmm;
+			try
+			{
+				hmm = songData.get(songs[curSelected].songName)[curDifficulty];
+				if (hmm != null)
+					Conductor.changeBPM(hmm.bpm);
+			}
+			catch(ex)
+			{}
 
 		var bullShit:Int = 0;
 

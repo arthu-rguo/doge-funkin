@@ -104,10 +104,8 @@ class DialogueBox extends FlxSpriteGroup
 		if (!dialogueStarted)
 		{
 			startDialogue();
-			if (PlayState.SONG.song == 'Feet') {
-				FlxG.sound.playMusic(Paths.music('breakfast'), 0);
-				FlxG.sound.music.fadeIn(1, 0, 0.1);
-			}
+			FlxG.sound.playMusic(Paths.music('breakfast'), 0);
+			FlxG.sound.music.fadeIn(1, 0, 0.1);
 			dialogueStarted = true;
 		}
 
