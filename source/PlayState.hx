@@ -313,7 +313,9 @@ class PlayState extends MusicBeatState
 		//dialogue shit
 		switch (songLowercase)
 		{
-			case 'feet' | 'toes' | 'sole' | 'fire-truck' | 'moster-truck' | 'scrapped':
+			case 'tutorial':
+				// do nothing
+			default:
 				dialogue = CoolUtil.coolTextFile(Paths.txt(songLowercase + '/dialogue'));
 		}
 
@@ -1165,10 +1167,10 @@ class PlayState extends MusicBeatState
 		{
 			switch (StringTools.replace(curSong," ", "-").toLowerCase())
 			{
-				case 'feet' | 'toes' | 'sole' | 'fire-truck' | 'moster-truck':
-					dialogueIntro(doof);
-				default:
+				case 'tutorial':
 					startCountdown();
+				default:
+					dialogueIntro(doof);
 			}
 		}
 		else
@@ -2878,8 +2880,8 @@ class PlayState extends MusicBeatState
 					#if desktop
 					switch(PlayState.SONG.song)
 					{
-						case 'whatever':
-							LoadingState.loadAndSwitchState(new VideoState("assets/videos/", new PlayState()));
+						case 'All Bark No Bite':
+							LoadingState.loadAndSwitchState(new VideoState("assets/videos/walter/vid.webm", new PlayState()));
 
 						default:
 							LoadingState.loadAndSwitchState(new PlayState());
