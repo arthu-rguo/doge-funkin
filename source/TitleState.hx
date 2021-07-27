@@ -361,7 +361,7 @@ class TitleState extends MusicBeatState
 			case 4:
 				deleteCoolText();
 			case 5:
-				createCoolText(['Made with love', 'to the']);
+				createCoolText(['Made with love', 'for the']);
 			case 7:
 				addMoreText('Dogelore community');
 				ngSpr.visible = true;	
