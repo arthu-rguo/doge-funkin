@@ -725,7 +725,7 @@
         "stage": "derby",
         "validScore": true,
         "sections": 0,
-        "needsVoices": false,
+        "needsVoices": true,
         "bpm": 95,
         "speed": 1.6
     }

@@ -628,7 +628,7 @@
         ],
         "player2": "walter",
         "song": "Fire Truck",
-        "needsVoices": false,
+        "needsVoices": true,
         "stage": "derby",
         "validScore": true,
         "sections": 0,
