@@ -1,6 +1,5 @@
 {
     "song": {
-        "sectionLengths": [],
         "player1": "bf",
         "player2": "walter",
         "notes": [
@@ -3770,7 +3769,6 @@
         ],
         "song": "Moster Truck",
         "validScore": true,
-        "sections": 0,
         "needsVoices": true,
         "stage": "derby",
         "speed": 1.7,

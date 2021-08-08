@@ -4771,12 +4771,12 @@
                     [
                         169043,
                         4,
-                        3900
+                        4000
                     ],
                     [
                         169043.47826087,
                         3,
-                        3900
+                        4000
                     ]
                 ],
                 "altAnim": false,
@@ -4788,7 +4788,7 @@
         "player2": "walter",
         "song": "All Bark No Bite",
         "stage": "derbyfire",
-        "needsVoices": false,
+        "needsVoices": true,
         "validScore": true,
         "bpm": 230,
         "speed": 2.6

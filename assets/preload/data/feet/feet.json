@@ -1,7 +1,6 @@
 {
     "song": {
         "player1": "bf",
-        "sectionLengths": [],
         "player2": "doge",
         "notes": [
             {
@@ -699,7 +698,6 @@
         "song": "Feet",
         "stage": "couch",
         "validScore": true,
-        "sections": 0,
         "needsVoices": true,
         "bpm": 120,
         "speed": 1.1

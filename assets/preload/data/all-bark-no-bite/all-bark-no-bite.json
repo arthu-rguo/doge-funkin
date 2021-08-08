@@ -7201,36 +7201,26 @@
                     [
                         169043,
                         4,
-                        3900
+                        4000
                     ],
                     [
                         169043.47826087,
                         3,
-                        3900
+                        4000
                     ]
                 ],
                 "altAnim": false,
                 "bpm": 230,
                 "changeBPM": false,
                 "mustHitSection": false
-            },
-            {
-                "lengthInSteps": 16,
-                "altAnim": false,
-                "typeOfSection": 0,
-                "sectionNotes": [],
-                "bpm": 230,
-                "changeBPM": false,
-                "mustHitSection": true
             }
         ],
         "player2": "walter",
         "song": "All Bark No Bite",
         "stage": "derbyfire",
         "validScore": true,
-        "needsVoices": false,
+        "needsVoices": true,
         "bpm": 230,
-        "noteStyle": "normal",
         "speed": 2.6
     }
 }
