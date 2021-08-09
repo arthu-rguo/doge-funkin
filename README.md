@@ -7,7 +7,7 @@ who up playing wit they  doge
 ### Le Doge Team has arrived 
  - ArfieCat#3621 - Art & Programming
  - Odie#7745 - Art & Dialogue
- - rcemo#6388 - Art
+ - rrcemo - Art
  - Wickedbelle#2200 - Charting
  - Blue™#3621 - Music
  - YungRhythm - Music
