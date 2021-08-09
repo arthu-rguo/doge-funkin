@@ -181,7 +181,7 @@ class DialogueBox extends FlxSpriteGroup
 				case "feet" | "toes" | "sole":
 					swagDialogue.sounds = [FlxG.sound.load(Paths.sound('dogeText'), 0.6), FlxG.sound.load(Paths.sound('dogeText'), 0.8)];
 				case "fire truck" | "moster truck" | "all bark no bite" | "scrapped":
-					swagDialogue.sounds = [FlxG.sound.load(Paths.sound('pixelText'), 0.6), FlxG.sound.load(Paths.sound('pixelText'), 0.8)];
+					swagDialogue.sounds = [FlxG.sound.load(Paths.sound('walterText'), 0.6), FlxG.sound.load(Paths.sound('walterText'), 0.8)];
 			}
 		}
 		if (curCharacter == 'bf') {
