@@ -1,5 +1,8 @@
 package;
 
+import flixel.tweens.FlxTween;
+import flixel.tweens.FlxEase;
+import flixel.FlxSprite;
 import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.util.FlxColor;
@@ -31,6 +34,16 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		bf = new Boyfriend(x, y, daBf);
 		add(bf);
+
+		if (PlayState.SONG.song == "All Bark No Bite") {
+			var bite:FlxSprite = new FlxSprite(x - 60, y - 200);
+			bite.frames = Paths.getSparrowAtlas('derby/bite');
+			bite.animation.addByPrefix('bite', 'jaw', 12, false);
+			add(bite);
+			FlxG.sound.play(Paths.sound('Lights_Shut_off'), 0.6);
+			bite.animation.play("bite");
+			FlxTween.tween(bite, {alpha: 0}, 0.5, {ease: FlxEase.quintIn});
+		}
 
 		camFollow = new FlxObject(bf.getGraphicMidpoint().x, bf.getGraphicMidpoint().y, 1, 1);
 		add(camFollow);

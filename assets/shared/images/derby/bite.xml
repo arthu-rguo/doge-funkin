@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="bite.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="jaw0000" x="0" y="0" width="455" height="821" frameX="-14" frameY="0" frameWidth="483" frameHeight="821"/>
+	<SubTexture name="jaw0001" x="457" y="0" width="454" height="564" frameX="-15" frameY="-128" frameWidth="483" frameHeight="821"/>
+	<SubTexture name="jaw0002" x="0" y="823" width="483" height="309" frameX="0" frameY="-256" frameWidth="483" frameHeight="821"/>
+	<SubTexture name="jaw0003" x="485" y="823" width="455" height="382" frameX="-14" frameY="-220" frameWidth="483" frameHeight="821"/>
+	<SubTexture name="jaw0004" x="0" y="1207" width="455" height="503" frameX="-14" frameY="-159" frameWidth="483" frameHeight="821"/>
+	<SubTexture name="jaw0005" x="0" y="1207" width="455" height="503" frameX="-14" frameY="-159" frameWidth="483" frameHeight="821"/>
+	<SubTexture name="jaw0006" x="0" y="1207" width="455" height="503" frameX="-14" frameY="-159" frameWidth="483" frameHeight="821"/>
+	<SubTexture name="jaw0007" x="0" y="0" width="1" height="1"/>
+</TextureAtlas>
