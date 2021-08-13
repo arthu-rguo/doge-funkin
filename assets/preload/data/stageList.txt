@@ -2,10 +2,3 @@ stage
 couch
 derby
 derbyfire
-halloween
-philly
-limo
-mall
-mallEvil
-school
-schoolEvil
