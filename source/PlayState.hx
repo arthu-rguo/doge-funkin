@@ -3407,16 +3407,15 @@ class PlayState extends MusicBeatState
 				dad.playAnim('cheer', true);
 			}
 
-		switch (curStage)
-		{
-			case "derbyfire":
-				// wtf scary walter...
-				if (dad.animation.curAnim.name.startsWith("sing") && curBeat >= 380) {
-					gf.playAnim('scared', true);
+		if (SONG.song == "All Bark No Bite") {
+			// wtf scary walter...
+			if (dad.animation.curAnim.name.startsWith("sing") && curBeat >= 380) {
+				gf.playAnim('scared', true);
+				if (!boyfriend.animation.curAnim.name.startsWith("sing"))
 					boyfriend.playAnim('scared', true);
-					if (curBeat < 384) 
-						health *= 0.6;
-				}	
+				if (curBeat < 384) 
+					health *= 0.6;
+			}	
 		}
 	}
 
